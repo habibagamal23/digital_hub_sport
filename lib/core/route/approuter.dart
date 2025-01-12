@@ -1,14 +1,18 @@
 import 'package:degitalhubsport/features/auth/ui/login_screen.dart';
-import 'package:degitalhubsport/features/choose_sport/ui/c.dart';
+import 'package:degitalhubsport/features/choose_sport/ui/ChooseSportScreen.dart';
 import 'package:degitalhubsport/features/onboarding/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/sports/volleyball/ui/screens/dti.dart';
+import '../../features/sports/volleyball/ui/screens/vollhome.dart';
 
 class ConstantsRoutes {
   static const String splashScreen = "/";
   static const String loginScreen = "/login";
   static const String onBoardingScreen = "/onboarding";
   static const String chooseSportScreen = "/chooseSport";
+  static const String volleyballHome = "/volleyballHome";
+  static const String volleyballPlayerDetails = "/volleyballPlayerDetails";
 
 }
 
@@ -40,14 +44,18 @@ class AppRouter {
           return ChooseSportScreen();
         },
       ),
-      // Example for additional routes:
-      // GoRoute(
-      //   path: ConstantsRoutes.productPage,
-      //   builder: (context, state) {
-      //     final prod = state.extra as Product;
-      //     return ProductDetailsScreen(product: prod);
-      //   },
-      // ),
+      GoRoute(
+        path: ConstantsRoutes.volleyballHome,
+        builder: (context, state) => const VolleyballHome(),
+      ),
+      GoRoute(
+        path: ConstantsRoutes.volleyballPlayerDetails,
+        builder: (context, state) {
+          final playerId = state.extra as String;
+          return VolleyballPlayerDetails(playerId: playerId);
+        },
+      ),
+
     ],
   );
 }

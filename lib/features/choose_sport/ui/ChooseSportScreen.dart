@@ -1,7 +1,12 @@
+import 'package:degitalhubsport/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/route/approuter.dart';
+import '../../../core/theme/style.dart';
 import '../data/model/sports_data.dart';
-import 'card.dart';
+import 'SportCard.dart';
 
 
 class ChooseSportScreen extends StatelessWidget {
@@ -20,21 +25,17 @@ class ChooseSportScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+             Text(
               'Choose Sport',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyles.title1B
             ),
-            const SizedBox(height: 24),
-            Expanded(
+            verticalSpace(23)
+,            Expanded(
               child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Two columns
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16.sp,
+                  mainAxisSpacing: 16.sp,
                 ),
                 itemCount: sports.length,
                 itemBuilder: (context, index) {
@@ -43,8 +44,10 @@ class ChooseSportScreen extends StatelessWidget {
                     name: sport.name,
                     iconPath: sport.iconPath,
                     onTap: () {
-                      Navigator.pushNamed(context, '/${sport.name.toLowerCase()}');
-                    },
+                      if (sport.name == 'Volleyball') {
+                        context.push(ConstantsRoutes.volleyballHome);
+                      }
+                   },
                   );
                 },
               ),

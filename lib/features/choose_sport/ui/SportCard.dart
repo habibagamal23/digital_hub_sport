@@ -1,5 +1,10 @@
+import 'package:degitalhubsport/core/theme/colors.dart';
+import 'package:degitalhubsport/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../core/theme/style.dart';
 
 class SportCard extends StatelessWidget {
   final String name;
@@ -19,25 +24,21 @@ class SportCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.orange,
-          borderRadius: BorderRadius.circular(8),
+          color: ColorsManager.mainOrange700,
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               iconPath,
-              height: 40,
-              width: 40,
+              height: 30.h,
+              width: 30.w,
             ),
-            const SizedBox(height: 8),
+            verticalSpace(8),
             Text(
               name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyles.title2B,
             ),
           ],
         ),
